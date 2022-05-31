@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:zhsou/entity.dart';
 import 'package:zhsou/service.dart';
 
@@ -21,6 +22,31 @@ class MyApp extends StatelessWidget {
   }
 }
 
+Future<void> showRecordDetailDialog(BuildContext context, Record record) async {
+  await showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text("文档编号：${record.id}"),
+        content: Text(
+          "文档编号：${record.id}\n"
+          "文档文字描述：${record.text}\n"
+          "文档url：${record.document.url}",
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text('关闭对话框'),
+          ),
+        ],
+        actionsAlignment: MainAxisAlignment.center,
+      );
+    },
+  );
+}
+
 class RecordItemWidget extends StatelessWidget {
   final Record record;
   const RecordItemWidget(this.record, {Key? key}) : super(key: key);
@@ -28,12 +54,21 @@ class RecordItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      leading: Image.network(
+        record.document.url,
+        width: 90,
+      ),
       title: Text(record.text),
       subtitle: Text('文档编号：${record.id}'),
       trailing: IconButton(
-        icon: Icon(Icons.ads_click),
-        onPressed: () {},
+        icon: const Icon(Icons.open_in_browser),
+        onPressed: () {
+          launchUrl(Uri.parse(record.document.url));
+        },
       ),
+      onTap: () {
+        showRecordDetailDialog(context, record);
+      },
     );
   }
 }
