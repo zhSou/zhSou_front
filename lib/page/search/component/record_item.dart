@@ -34,10 +34,12 @@ class RecordItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Image.network(
-        record.document.url,
-        width: 90,
-      ),
+      leading: record.document.url.isEmpty
+          ? null
+          : Image.network(
+              record.document.url,
+              width: 90,
+            ),
       title: Text(record.text),
       subtitle: Text('文档编号：${record.id}'),
       trailing: IconButton(

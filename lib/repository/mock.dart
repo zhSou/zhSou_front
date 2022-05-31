@@ -10,9 +10,9 @@ const mockJsonResponseList = [
 	"msg": "Success",
 	"data": {
 		"useTime": 0.007,
-		"total": 2280,
+		"total": 20,
 		"page": 1,
-		"totalPage": 228,
+		"totalPage": 2,
 		"records": [
 			{
 				"id": 149,
@@ -104,9 +104,9 @@ const mockJsonResponseList = [
 	"msg": "Success",
 	"data": {
 		"useTime": 0.0685073,
-		"total": 2280,
+		"total": 20,
 		"page": 2,
-		"totalPage": 228,
+		"totalPage": 2,
 		"records": [
 			{
 				"id": 2762,
@@ -202,6 +202,8 @@ class SearcherMock implements ASearcher {
     int page, {
     int limit = 10,
   }) async {
+    if (query.isEmpty) return SearchResponse();
+    await Future.delayed(Duration(milliseconds: 500));
     final responseJson =
         jsonDecode(mockJsonResponseList[page - 1]) as Map<String, dynamic>;
     return SearchResponse.fromJson(responseJson['data']);
