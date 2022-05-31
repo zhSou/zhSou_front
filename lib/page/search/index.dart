@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:zhsou/repository/abstract.dart';
+import 'package:zhsou/repository/entity.dart';
+import 'package:zhsou/widget/future_builder.dart';
+import 'package:zhsou/widget/page_switcher.dart';
 
-import 'abstract.dart';
-import 'component.dart';
-import 'entity.dart';
-import 'future_builder.dart';
+import 'component/search_input.dart';
+import 'component/search_result.dart';
 
 class SearchBodyWidget extends StatefulWidget {
   final ASearcher searcher;

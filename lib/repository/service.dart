@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:zhsou/abstract.dart';
+import 'package:zhsou/config.dart';
 
+import 'abstract.dart';
 import 'entity.dart';
 
 class SearcherService implements ASearcher {
@@ -11,7 +12,7 @@ class SearcherService implements ASearcher {
     int limit = 10,
   }) async {
     final response = await Dio().post(
-      "http://localhost:8001/query",
+      "${Config.server}/query",
       data: {
         "query": query,
         "page": page,

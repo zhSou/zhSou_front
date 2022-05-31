@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zhsou/abstract.dart';
-import 'package:zhsou/mock.dart';
+import 'package:zhsou/repository/abstract.dart';
+import 'package:zhsou/repository/mock.dart';
 
 void main() {
   test("test search api mock", () async {

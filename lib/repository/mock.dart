@@ -1,7 +1,6 @@
 import 'dart:convert';
 
-import 'package:zhsou/abstract.dart';
-
+import 'abstract.dart';
 import 'entity.dart';
 
 const mockJsonResponseList = [
