@@ -28,8 +28,6 @@ class _SearchBodyWidgetState extends State<SearchBodyWidget> {
           callback: (val) async {
             setState(() {
               query = val;
-              pageId = 1;
-              limitSize = 100;
             });
           },
         ),
