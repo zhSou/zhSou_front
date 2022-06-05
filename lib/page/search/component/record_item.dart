@@ -29,6 +29,7 @@ Future<void> showRecordDetailDialog(BuildContext context, Record record) async {
 
 class RecordItemWidget extends StatelessWidget {
   final Record record;
+
   const RecordItemWidget(this.record, {Key? key}) : super(key: key);
 
   @override
@@ -39,6 +40,13 @@ class RecordItemWidget extends StatelessWidget {
           : Image.network(
               record.document.url,
               width: 90,
+              errorBuilder: (
+                BuildContext context,
+                Object error,
+                StackTrace? stackTrace,
+              ) {
+                return const SizedBox(width: 90);
+              },
             ),
       title: Text(record.text),
       subtitle: Text('文档编号：${record.id}'),
