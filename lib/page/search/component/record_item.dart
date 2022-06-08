@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:zhsou/repository/entity.dart';
 
@@ -48,7 +49,7 @@ class RecordItemWidget extends StatelessWidget {
                 return const SizedBox(width: 90);
               },
             ),
-      title: Text(record.text),
+      title: HtmlWidget(record.text),
       subtitle: Text('文档编号：${record.id}'),
       trailing: IconButton(
         icon: const Icon(Icons.open_in_browser),

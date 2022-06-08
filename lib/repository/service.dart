@@ -17,6 +17,10 @@ class SearcherService implements ASearcher {
         "query": query,
         "page": page,
         "limit": limit,
+        "highLight": {
+          "preTag": "<span style='color:red'>",
+          "postTag": "</span>"
+        },
       },
     );
     final data = response.data as Map<String, dynamic>;
